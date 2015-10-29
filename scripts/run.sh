@@ -1,42 +1,14 @@
 
 BasePath="/user/mgroup3"
 DataPath="data"
-OutputPath="results"
-AllSummaryName="AllNumerical"
-OutputSurfix="_summary"
-FieldNames=(
-	"rate_code"
-	"passenger_count"
-	"trip_time_in_secs"
-	"trip_distance"
-	"pickup_longitude"
-	"pickup_latitude"
-	"dropoff_longitude"
-	"dropoff_latitude"
-	"fare_amount"
-	"surcharge"
-	"mta_tax"
-	"tip_amount"
-	"tolls_amount"
-	"total_amount"
- ) 
+BaseOutputPath="results"
+SubOutputPath="NumericalSummary"
+ 
 
-function join { local IFS="$1"; shift; echo "$*"; }
-
-hadoop fs -rmr ${BasePath}/${OutputPath}/${AllSummaryName}${OutputSurfix}
+hadoop fs -rmr ${BasePath}/${BaseOutputPath}/${SubOutputPath}
 
 if [ $1 == 'all' ]; then
-    hadoop jar ../target/NumericalSummary-0.0.1.jar edu.clu.cs.NumericalSummaryDriver -c $(join , "${FieldNames[@]}") -i ${BasePath}/${DataPath} -o ${BasePath}/${OutputPath}/${AllSummaryName}${OutputSurfix}
+    hadoop jar ../target/CSC582Project-1.jar edu.clu.cs.NumericalSummaryDriver -i ${BasePath}/${DataPath} -o ${BasePath}/${BaseOutputPath}/${SubOutputPath}
 
     exit
 fi
-
-for field in "${FieldNames[@]}"
-do
-    hadoop fs -rmr ${BasePath}/${OutputPath}/${field}${OutputSurfix}
-    hadoop jar ../target/NumericalSummary-0.0.1.jar edu.clu.cs.NumericalSummaryDriver -c ${field} -i ${BasePath}/${DataPath} -o ${BasePath}/${OutputPath}/${field}${OutputSurfix}
-done
-
-
-
-
