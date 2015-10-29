@@ -61,7 +61,7 @@ public class DailyEnsembleNSHourlyBinDriver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(NumericalSummaryTuple.class);
 
-		job.setNumReduceTasks(1);
+		job.setNumReduceTasks(4);
 
 		job.setInputFormatClass(TripDataInputFormat.class);
 

@@ -61,7 +61,7 @@ public class NumericalSummaryDriver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(NumericalSummaryTuple.class);
 
-		job.setNumReduceTasks(1);
+		job.setNumReduceTasks(14);
 
 		job.setInputFormatClass(TripDataInputFormat.class);
 

@@ -8,4 +8,5 @@
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/DailyEnsembleNSHourlyBinDriver.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryMapper.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryReducer.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/WeeklyEnsembleNSHourlyBinMapper.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryTuple.java
