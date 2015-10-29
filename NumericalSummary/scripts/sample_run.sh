@@ -1,7 +1,7 @@
 
 BasePath="/user/mgroup3"
-DataPath="data"
-OutputPath="results"
+DataPath="data2"
+OutputPath="sample_results"
 AllSummaryName="AllNumerical"
 OutputSurfix="_summary"
 FieldNames=(

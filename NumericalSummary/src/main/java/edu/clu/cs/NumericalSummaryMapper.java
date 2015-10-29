@@ -1,7 +1,9 @@
 package edu.clu.cs;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.io.FloatWritable;
@@ -12,43 +14,56 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Mapper;
 
 public class NumericalSummaryMapper extends
-		Mapper<LongWritable, Text, Text, FloatWritable> {
+		Mapper<LongWritable, TripDataTuple, Text, FloatWritable> {
 	private FloatWritable m_val = new FloatWritable();
-	private Text[] m_colName = null;
-	// private Random m_rnd = new Random();
-	private int[] m_colIndex = null;
+	private Text m_colKey = new Text();
+	private Set<String> m_colName = new HashSet<String>();
 
 	@Override
 	public void setup(Context context) {
 		String[] cols = context.getConfiguration().get("cols").split(",");
 		for (int i = 0; i < cols.length; ++i) {
-			cols[i] = cols[i].trim();
-		}
-		m_colName = new Text[cols.length];
-		m_colIndex = new int[cols.length];
-
-		for (int i = 0; i < cols.length; ++i) {
-			m_colName[i] = new Text(TripDataFormat.getColName(cols[i]));
-			m_colIndex[i] = TripDataFormat.getColIndex(cols[i]);
+			m_colName.add(cols[i].trim());
 		}
 	}
 
 	@Override
-	public void map(LongWritable key, Text value, Context context)
+	public void map(LongWritable key, TripDataTuple value, Context context)
 			throws IOException, InterruptedException {
 
-		String line = value.toString();
-		String[] fields = line.split(",");
-
-		for (int i = 0; i < m_colIndex.length; ++i) {
-			try {
-				m_val.set(Float.valueOf(fields[m_colIndex[i]].trim()));
-			} catch (NumberFormatException e) {
-				m_val.set(Float.NaN);
+		for (String colName : m_colName) {
+			m_colKey.set(colName);
+			if (colName.equals("rate_code")) {
+				m_val.set(value.getRateCode());
+			} else if (colName.equals("passenger_count")) {
+				m_val.set(value.getPassengerCount());
+			} else if (colName.equals("trip_time_in_secs")) {
+				m_val.set(value.getTripTimeInSecs());
+			} else if (colName.equals("trip_distance")) {
+				m_val.set(value.getTripDistance());
+			} else if (colName.equals("pickup_longitude")) {
+				m_val.set(value.getPickupLongitude());
+			} else if (colName.equals("pickup_latitude")) {
+				m_val.set(value.getPickupLatitude());
+			} else if (colName.equals("dropoff_longitude")) {
+				m_val.set(value.getDropoffLongitude());
+			} else if (colName.equals("drop_off_latitude")) {
+				m_val.set(value.getDropoffLatitude());
+			} else if (colName.equals("fare_amount")) {
+				m_val.set(value.getFareAmount());
+			} else if (colName.equals("surcharge")) {
+				m_val.set(value.getSurcharge());
+			} else if (colName.equals("mta_tax")) {
+				m_val.set(value.getMtaTax());
+			} else if (colName.equals("tip_amount")) {
+				m_val.set(value.getTipAmount());
+			} else if (colName.equals("tolls_amount")) {
+				m_val.set(value.getTollsAmount());
+			} else if (colName.equals("total_amount")) {
+				m_val.set(value.getTotalAmount());
 			}
 
-			// if (m_rnd.nextFloat()<0.0001)
-			context.write(m_colName[i], m_val);
+			context.write(m_colKey, m_val);
 		}
 
 	}
