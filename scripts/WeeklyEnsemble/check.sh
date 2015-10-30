@@ -1,6 +1,6 @@
 BasePath="/user/mgroup3"
 BaseOutputPath="results"
-SubOutputPath="NumericalSummary"
+SubOutputPath="WeeklyEnsembleNS"
 
 hadoop fs -cat ${BasePath}/${BaseOutputPath}/${SubOutputPath}/*
 

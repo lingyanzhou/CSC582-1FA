@@ -12,6 +12,7 @@ public class NumericalSummaryTuple implements Writable {
 	    private float m_stdDev = Float.NaN;
 	    private long m_missingCount = 0;
 	    private long m_totalCount = 0;
+	    private float m_sum = Float.NaN;
 	    
 	    public void setMin(float val) {
 	    	m_min = val;
@@ -36,6 +37,11 @@ public class NumericalSummaryTuple implements Writable {
 	    public void setMissingCount(long val) {
 	    	m_missingCount = val;
 	    }
+
+		public void setSum(float sum) {
+			m_sum = sum;
+			
+		}
 	    
 	    public float getMin() {
 	    	return m_min;
@@ -60,9 +66,13 @@ public class NumericalSummaryTuple implements Writable {
 	    public long getMissingCount() {
 	    	return m_missingCount;
 	    }
+	    
+	    public float getSum() {
+	    	return m_sum;
+	    }
 
 	    public String toString() {
-	    	return "" + m_min + "\t" + m_max + "\t" + m_mean + "\t"  + m_stdDev + "\t" + m_missingCount + "\t" + m_totalCount;
+	    	return "" + m_min + "\t" + m_max + "\t" + m_mean + "\t"  + m_stdDev + "\t" + m_missingCount + "\t" + m_totalCount + "\t" + m_sum;
 	    }
 	    
 		public void readFields(DataInput in) throws IOException {
@@ -72,6 +82,7 @@ public class NumericalSummaryTuple implements Writable {
 		    m_stdDev = in.readFloat();
 		    m_missingCount = in.readLong();
 		    m_totalCount = in.readLong();
+		    m_sum = in.readFloat();
 		}
 		public void write(DataOutput out) throws IOException {
 			out.writeFloat(m_min);
@@ -80,6 +91,7 @@ public class NumericalSummaryTuple implements Writable {
 		    out.writeFloat(m_stdDev);
 		    out.writeLong(m_missingCount);
 		    out.writeLong(m_totalCount);
+		    out.writeFloat(m_sum);
 		}
 	
 	} 

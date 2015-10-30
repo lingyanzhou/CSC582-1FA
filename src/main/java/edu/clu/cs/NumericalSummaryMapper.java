@@ -22,10 +22,6 @@ public class NumericalSummaryMapper extends
 	public void map(LongWritable key, TripDataTuple value, Context context)
 			throws IOException, InterruptedException {
 
-		m_colKey.set("rate_code");
-		m_val.set(value.getRateCode());
-		context.write(m_colKey, m_val);
-
 		m_colKey.set("passenger_count");
 		m_val.set(value.getPassengerCount());
 		context.write(m_colKey, m_val);

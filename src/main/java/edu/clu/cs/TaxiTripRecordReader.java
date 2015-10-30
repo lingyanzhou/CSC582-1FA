@@ -39,7 +39,8 @@ public class TaxiTripRecordReader extends
 		m_lineValue.setHackLicense(fields[1]);
 		m_lineValue.setVendorId(TripDataFormatHelper.s_venderIdFactor
 				.convertToFloat(fields[2]));
-		m_lineValue.setRateCode(Float.parseFloat(fields[3]));
+		m_lineValue.setRateCode(TripDataFormatHelper.s_rateCodeFactor
+				.convertToFloat(fields[3]));
 		m_lineValue
 				.setStoreAndFwdFlag(TripDataFormatHelper.s_storeFwdFlagFactor
 						.convertToFloat(fields[4]));
@@ -57,60 +58,48 @@ public class TaxiTripRecordReader extends
 		} catch (ParseException e) {
 			throw new IOException(e);
 		}
-		try {
-			m_lineValue.setPassengerCount(Float.parseFloat(fields[7]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setTripTimeInSecs(Float.parseFloat(fields[8]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setTripDistance(Float.parseFloat(fields[9]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setPickupLongitude(Float.parseFloat(fields[10]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setPickupLatitude(Float.parseFloat(fields[11]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setDropoffLongitude(Float.parseFloat(fields[12]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setDropoffLatitude(Float.parseFloat(fields[13]));
-		} catch (NumberFormatException e) {
-		}
+
+		m_lineValue.setPassengerCount(TripDataFormatHelper.s_passengerCount
+				.convertToFloat(fields[7]));
+
+		m_lineValue.setTripTimeInSecs(TripDataFormatHelper.s_tripTimeInSecs
+				.convertToFloat(fields[8]));
+
+		m_lineValue.setTripDistance(TripDataFormatHelper.s_tripDistance
+				.convertToFloat(fields[9]));
+
+		m_lineValue.setPickupLongitude(TripDataFormatHelper.s_pickupLongitude
+				.convertToFloat(fields[10]));
+
+		m_lineValue.setPickupLatitude(TripDataFormatHelper.s_pickupLatitude
+				.convertToFloat(fields[11]));
+
+		m_lineValue.setDropoffLongitude(TripDataFormatHelper.s_dropoffLongitude
+				.convertToFloat(fields[12]));
+
+		m_lineValue.setDropoffLatitude(TripDataFormatHelper.s_dropoffLatitude
+				.convertToFloat(fields[13]));
+
 		m_lineValue.setPaymentType(TripDataFormatHelper.s_paymentTypeFactor
 				.convertToFloat(fields[14]));
-		try {
-			m_lineValue.setFareAmount(Float.parseFloat(fields[15]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setSurcharge(Float.parseFloat(fields[16]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setMtaTax(Float.parseFloat(fields[17]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setTipAmount(Float.parseFloat(fields[18]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setTollsAmount(Float.parseFloat(fields[19]));
-		} catch (NumberFormatException e) {
-		}
-		try {
-			m_lineValue.setTotalAmount(Float.parseFloat(fields[20]));
-		} catch (NumberFormatException e) {
-		}
+
+		m_lineValue.setFareAmount(TripDataFormatHelper.s_fareAmount
+				.convertToFloat(fields[15]));
+
+		m_lineValue.setSurcharge(TripDataFormatHelper.s_surcharge
+				.convertToFloat(fields[16]));
+
+		m_lineValue.setMtaTax(TripDataFormatHelper.s_mtaTax
+				.convertToFloat(fields[17]));
+
+		m_lineValue.setTipAmount(TripDataFormatHelper.s_tipAmount
+				.convertToFloat(fields[18]));
+
+		m_lineValue.setTollsAmount(TripDataFormatHelper.s_tollsAmount
+				.convertToFloat(fields[19]));
+
+		m_lineValue.setTotalAmount(TripDataFormatHelper.s_totalAmount
+				.convertToFloat(fields[20]));
 
 		return m_lineValue;
 	}

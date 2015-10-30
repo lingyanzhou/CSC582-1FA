@@ -49,7 +49,7 @@ public class NumericalSummaryDriver {
 
 		Configuration conf = new Configuration();
 
-		Job job = Job.getInstance(conf, "");
+		Job job = Job.getInstance(conf, "Group3 NumericalSummary");
 		job.setJarByClass(NumericalSummaryDriver.class);
 		job.setMapperClass(NumericalSummaryMapper.class);
 
@@ -61,7 +61,7 @@ public class NumericalSummaryDriver {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(NumericalSummaryTuple.class);
 
-		job.setNumReduceTasks(14);
+		job.setNumReduceTasks(13);
 
 		job.setInputFormatClass(TripDataInputFormat.class);
 

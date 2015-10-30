@@ -2,11 +2,14 @@
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TripDataTuple.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TripDataInputFormat.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/Factor.java
-/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TripDataFormatHelper.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/DailyEnsembleNSHourlyBinMapper.java
-/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TaxiTripRecordReader.java
-/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/DailyEnsembleNSHourlyBinDriver.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryMapper.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalValue.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/WeeklyEnsembleNSHourlyBinDriver.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TripDataFormatHelper.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/DailyEnsembleNSHourlyBinDriver.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/TaxiTripRecordReader.java
+/home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/BasicTripDataFilterMapper.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryReducer.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/WeeklyEnsembleNSHourlyBinMapper.java
 /home/zhoulingyan/Documents/javaWrokspace/NumericalSummary/src/main/java/edu/clu/cs/NumericalSummaryTuple.java

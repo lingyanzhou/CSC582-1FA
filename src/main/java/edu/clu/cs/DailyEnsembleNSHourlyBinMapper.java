@@ -46,6 +46,4 @@ extends Mapper<LongWritable, TripDataTuple, Text, FloatWritable> {
 		m_val.set(value.getTipAmount());
 		context.write(m_key, m_val);
 	}
-	
-
 }

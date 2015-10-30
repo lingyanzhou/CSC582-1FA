@@ -7,4 +7,4 @@ SubOutputPath="NumericalSummary"
 
 hadoop fs -rmr ${BasePath}/${BaseOutputPath}/${SubOutputPath}
 
-hadoop jar ../target/CSC582Project-1.jar edu.clu.cs.NumericalSummaryDriver -i ${BasePath}/${DataPath} -o ${BasePath}/${BaseOutputPath}/${SubOutputPath}
+hadoop jar ../../target/CSC582Project-1.jar edu.clu.cs.NumericalSummaryDriver -i ${BasePath}/${DataPath} -o ${BasePath}/${BaseOutputPath}/${SubOutputPath}

@@ -6,6 +6,7 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
@@ -20,7 +21,7 @@ import org.apache.hadoop.mapreduce.lib.chain.ChainReducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class DailyEnsembleNSHourlyBinDriver {
+public class WeeklyEnsembleNSHourlyBinDriver {
 
 	static public void main(String[] args) throws IOException,
 			ClassNotFoundException, InterruptedException {
@@ -43,31 +44,30 @@ public class DailyEnsembleNSHourlyBinDriver {
 			printHelp();
 			System.exit(1);
 		}
-
+		
 		execute(outPathName, inPathName);
 	}
 
-	public static void execute(String outPathName, String inPathName)
-			throws IOException, ClassNotFoundException, InterruptedException {
+	public static void execute(String outPathName, String inPathName) throws IOException, ClassNotFoundException, InterruptedException {
 
 		Configuration conf = new Configuration();
 
-		Job job = Job.getInstance(conf, "Group3 DailyEnsemble");
-		job.setJarByClass(DailyEnsembleNSHourlyBinDriver.class);
-		// job.setMapperClass(WeeklyEnsembleNSHourlyBinMapper.class);
-
-		Configuration conf2 = new Configuration(false);
+		Job job = Job.getInstance(conf, "Group3 WeeklyEnsemble");
+		job.setJarByClass(WeeklyEnsembleNSHourlyBinDriver.class);
+		//job.setMapperClass(WeeklyEnsembleNSHourlyBinMapper.class);
 		
-		ChainMapper.addMapper(job, BasicTripDataFilterMapper.class,
-				LongWritable.class, TripDataTuple.class, LongWritable.class,
-				TripDataTuple.class, conf2);
-		ChainMapper.addMapper(job, WeeklyEnsembleNSHourlyBinMapper.class,
-				LongWritable.class, TripDataTuple.class, Text.class,
-				FloatWritable.class, conf2);
+		ChainMapper.addMapper(job,
+				BasicTripDataFilterMapper.class,LongWritable.class,
+				TripDataTuple.class, LongWritable.class, TripDataTuple.class,
+				conf);
+		ChainMapper.addMapper(job,
+				WeeklyEnsembleNSHourlyBinMapper.class,LongWritable.class,
+				TripDataTuple.class, Text.class, FloatWritable.class,
+				conf);
 		ChainReducer.setReducer(job,
 				NumericalSummaryReducer.class,Text.class,
 				FloatWritable.class, Text.class, NumericalSummaryTuple.class,
-				conf2);
+				conf);
 
 //		job.setMapOutputKeyClass(Text.class);
 //		job.setMapOutputValueClass(FloatWritable.class);
@@ -87,13 +87,10 @@ public class DailyEnsembleNSHourlyBinDriver {
 	private static void printHelp() {
 		HelpFormatter formatter = new HelpFormatter();
 		PrintWriter writer = new PrintWriter(System.err);
-		formatter
-				.printHelp(
-						writer,
-						80,
-						"hadoop jar <SomeJar> edu.clu.cs.DailyEnsembleNSHourlyBinDriver ",
-						"CSC582-1 Project Help", getOptions(), 4, 8,
-						"Author: Lingyan Zhou & Jianhong Zhu", true);
+		formatter.printHelp(writer, 80,
+				"hadoop jar <SomeJar> edu.clu.cs.WeeklyEnsembleNSHourlyBinDriver ",
+				"CSC582-1 Project Help", getOptions(), 4, 8,
+				"Author: Lingyan Zhou & Jianhong Zhu", true);
 		writer.close();
 	}
 

@@ -49,6 +49,7 @@ public class NumericalSummaryReducer extends
 		float stdDev = 0;
 		stdDev = (float) Math.sqrt(sumOfSquaredVal / (totalCount - missingCount) - Math.pow(mean, 2));
 		result.setStdDev(stdDev);
+		result.setSum((float)totalVal);
 		context.write(key, result);
 	}
 }

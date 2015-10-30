@@ -31,6 +31,21 @@ public class TripDataTuple implements Writable {
 	private float m_tollsAmount = Float.NaN;
 	private float m_totalAmount = Float.NaN;
 
+	public boolean containsNA() {
+		return (null == m_medallion || null == m_hackLicense
+				|| Float.isNaN(m_rateCode) 
+				|| null == m_pickupDatetime || null == m_dropoffDatetime
+				|| Float.isNaN(m_passengerCount)
+				|| Float.isNaN(m_tripTimeInSecs) || Float.isNaN(m_tripDistance)
+				|| Float.isNaN(m_pickupLongitude)
+				|| Float.isNaN(m_pickupLatitude)
+				|| Float.isNaN(m_dropoffLongitude)
+				|| Float.isNaN(m_dropoffLatitude) || Float.isNaN(m_paymentType)
+				|| Float.isNaN(m_fareAmount) || Float.isNaN(m_surcharge)
+				|| Float.isNaN(m_mtaTax) || Float.isNaN(m_tipAmount)
+				|| Float.isNaN(m_tollsAmount) || Float.isNaN(m_totalAmount));
+	}
+
 	public void clear() {
 		m_medallion = null;
 		m_hackLicense = null;
@@ -66,9 +81,15 @@ public class TripDataTuple implements Writable {
 		m_rateCode = in.readFloat();
 		m_storeAndFwdFlag = in.readInt();
 		if (in.readBoolean()) {
+			if (null == m_pickupDatetime) {
+				m_pickupDatetime = new GregorianCalendar();
+			}
 			m_pickupDatetime.setTimeInMillis(in.readLong());
 		}
 		if (in.readBoolean()) {
+			if (null == m_dropoffDatetime) {
+				m_dropoffDatetime = new GregorianCalendar();
+			}
 			m_dropoffDatetime.setTimeInMillis(in.readLong());
 		}
 		m_passengerCount = in.readFloat();
