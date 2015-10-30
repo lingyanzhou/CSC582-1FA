@@ -62,11 +62,11 @@ public class WeeklyEnsembleNSHourlyBinDriver {
 				conf);
 		ChainMapper.addMapper(job,
 				WeeklyEnsembleNSHourlyBinMapper.class,LongWritable.class,
-				TripDataTuple.class, Text.class, FloatWritable.class,
+				TripDataTuple.class, Text.class, NumericalSummaryTuple.class,
 				conf);
 		ChainReducer.setReducer(job,
 				NumericalSummaryReducer.class,Text.class,
-				FloatWritable.class, Text.class, NumericalSummaryTuple.class,
+				NumericalSummaryTuple.class, Text.class, NumericalSummaryTuple.class,
 				conf);
 
 //		job.setMapOutputKeyClass(Text.class);

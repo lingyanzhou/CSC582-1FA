@@ -12,15 +12,13 @@ import org.apache.commons.cli.ParseException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
-import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.chain.ChainMapper;
-import org.apache.hadoop.mapreduce.lib.chain.ChainReducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class DailyEnsembleNSHourlyBinDriver {
+public class FactorSummaryDriver {
 
 	static public void main(String[] args) throws IOException,
 			ClassNotFoundException, InterruptedException {
@@ -43,39 +41,27 @@ public class DailyEnsembleNSHourlyBinDriver {
 			printHelp();
 			System.exit(1);
 		}
-
+		
 		execute(outPathName, inPathName);
 	}
 
-	public static void execute(String outPathName, String inPathName)
-			throws IOException, ClassNotFoundException, InterruptedException {
+	public static void execute(String outPathName, String inPathName) throws IOException, ClassNotFoundException, InterruptedException {
 
 		Configuration conf = new Configuration();
 
-		Job job = Job.getInstance(conf, "Group3 DailyEnsemble");
-		job.setJarByClass(DailyEnsembleNSHourlyBinDriver.class);
-		// job.setMapperClass(WeeklyEnsembleNSHourlyBinMapper.class);
+		Job job = Job.getInstance(conf, "Group3 FactorSummary");
+		job.setJarByClass(FactorSummaryDriver.class);
+		job.setMapperClass(FactorSummaryMapper.class);
 
-		Configuration conf2 = new Configuration(false);
-		
-		ChainMapper.addMapper(job, BasicTripDataFilterMapper.class,
-				LongWritable.class, TripDataTuple.class, LongWritable.class,
-				TripDataTuple.class, conf2);
-		ChainMapper.addMapper(job, DailyEnsembleNSHourlyBinMapper.class,
-				LongWritable.class, TripDataTuple.class, Text.class,
-				NumericalSummaryTuple.class, conf2);
-		ChainReducer.setReducer(job,
-				NumericalSummaryReducer.class,Text.class,
-				NumericalSummaryTuple.class, Text.class, NumericalSummaryTuple.class,
-				conf2);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(IntWritable.class);
 
-//		job.setMapOutputKeyClass(Text.class);
-//		job.setMapOutputValueClass(FloatWritable.class);
-//
-//		job.setOutputKeyClass(Text.class);
-//		job.setOutputValueClass(NumericalSummaryTuple.class);
+		job.setReducerClass(IntSumReducer.class);
 
-		job.setNumReduceTasks(24);
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
+
+		job.setNumReduceTasks(16);
 
 		job.setInputFormatClass(TripDataInputFormat.class);
 
@@ -87,13 +73,10 @@ public class DailyEnsembleNSHourlyBinDriver {
 	private static void printHelp() {
 		HelpFormatter formatter = new HelpFormatter();
 		PrintWriter writer = new PrintWriter(System.err);
-		formatter
-				.printHelp(
-						writer,
-						80,
-						"hadoop jar <SomeJar> edu.clu.cs.DailyEnsembleNSHourlyBinDriver ",
-						"CSC582-1 Project Help", getOptions(), 4, 8,
-						"Author: Lingyan Zhou & Jianhong Zhu", true);
+		formatter.printHelp(writer, 80,
+				"hadoop jar <SomeJar> edu.clu.cs.NumericalSummaryDriver ",
+				"CSC582-1 Project Help", getOptions(), 4, 8,
+				"Author: Lingyan Zhou & Jianhong Zhu", true);
 		writer.close();
 	}
 

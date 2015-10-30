@@ -26,10 +26,11 @@ public class Factor {
 	}
 
 	public String convertToString(float val) {
-		if (val==m_levels.length) {
-			return "";
+		int index = Math.round(val);
+		if (index>=m_levels.length || index < 0) {
+			return "_NA_";
 		}
-		return m_labels[Math.round(val)];
+		return m_labels[index];
 	}
 
 	public String[] getLevels() {

@@ -54,7 +54,7 @@ public class NumericalSummaryDriver {
 		job.setMapperClass(NumericalSummaryMapper.class);
 
 		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(FloatWritable.class);
+		job.setMapOutputValueClass(NumericalSummaryTuple.class);
 
 		job.setReducerClass(NumericalSummaryReducer.class);
 
