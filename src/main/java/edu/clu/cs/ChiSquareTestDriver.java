@@ -11,6 +11,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -19,7 +20,7 @@ import org.apache.hadoop.mapreduce.lib.chain.ChainReducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class DailyEnsembleNSHourlyBinDriver {
+public class ChiSquareTestDriver {
 
 	static public void main(String[] args) throws IOException,
 			ClassNotFoundException, InterruptedException {
@@ -51,28 +52,27 @@ public class DailyEnsembleNSHourlyBinDriver {
 
 		Configuration conf = new Configuration();
 
-		Job job = Job.getInstance(conf, "Group3 DailyEnsemble");
-		job.setJarByClass(DailyEnsembleNSHourlyBinDriver.class);
+		Job job = Job.getInstance(conf, "Group3 ChiSquareTest");
+		job.setJarByClass(ChiSquareTestDriver.class);
 		// job.setMapperClass(WeeklyEnsembleNSHourlyBinMapper.class);
 
 		Configuration conf2 = new Configuration(false);
-		
+
 		ChainMapper.addMapper(job, BasicTripDataFilterMapper.class,
 				LongWritable.class, TripDataTuple.class, LongWritable.class,
 				TripDataTuple.class, conf2);
-		ChainMapper.addMapper(job, DailyEnsembleNSHourlyBinMapper.class,
+		ChainMapper.addMapper(job, ChiSquareTestMapper.class,
 				LongWritable.class, TripDataTuple.class, Text.class,
-				NumericalSummaryTuple.class, conf2);
-		ChainReducer.setReducer(job,
-				NumericalSummaryReducer.class,Text.class,
-				NumericalSummaryTuple.class, Text.class, NumericalSummaryTuple.class,
-				conf2);
+				ChiSquareTestTuple.class, conf2);
+		ChainReducer.setReducer(job, ChiSquareTestReducer.class,
+				Text.class, ChiSquareTestTuple.class, Text.class,
+				FloatWritable.class, conf2);
 
-//		job.setMapOutputKeyClass(Text.class);
-//		job.setMapOutputValueClass(FloatWritable.class);
-//
-//		job.setOutputKeyClass(Text.class);
-//		job.setOutputValueClass(NumericalSummaryTuple.class);
+		// job.setMapOutputKeyClass(Text.class);
+		// job.setMapOutputValueClass(FloatWritable.class);
+		//
+		// job.setOutputKeyClass(Text.class);
+		// job.setOutputValueClass(NumericalSummaryTuple.class);
 
 		job.setNumReduceTasks(24);
 
@@ -86,13 +86,10 @@ public class DailyEnsembleNSHourlyBinDriver {
 	private static void printHelp() {
 		HelpFormatter formatter = new HelpFormatter();
 		PrintWriter writer = new PrintWriter(System.err);
-		formatter
-				.printHelp(
-						writer,
-						80,
-						"hadoop jar <SomeJar> edu.clu.cs.DailyEnsembleNSHourlyBinDriver ",
-						"CSC582-1 Project Help", getOptions(), 4, 8,
-						"Author: Lingyan Zhou & Jianhong Zhu", true);
+		formatter.printHelp(writer, 80,
+				"hadoop jar <SomeJar> edu.clu.cs.ChiSquareTestDriver ",
+				"CSC582-1 Project Help", getOptions(), 4, 8,
+				"Author: Lingyan Zhou & Jianhong Zhu", true);
 		writer.close();
 	}
 

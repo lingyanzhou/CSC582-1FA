@@ -33,7 +33,7 @@ public class TripDataTuple implements Writable {
 
 	public boolean containsNA() {
 		return (null == m_medallion || null == m_hackLicense
-				|| Float.isNaN(m_rateCode) 
+				|| Float.isNaN(m_rateCode)  || Float.isNaN(m_storeAndFwdFlag)
 				|| null == m_pickupDatetime || null == m_dropoffDatetime
 				|| Float.isNaN(m_passengerCount)
 				|| Float.isNaN(m_tripTimeInSecs) || Float.isNaN(m_tripDistance)
@@ -79,7 +79,7 @@ public class TripDataTuple implements Writable {
 		}
 		m_vendorId = in.readFloat();
 		m_rateCode = in.readFloat();
-		m_storeAndFwdFlag = in.readInt();
+		m_storeAndFwdFlag = in.readFloat();
 		if (in.readBoolean()) {
 			if (null == m_pickupDatetime) {
 				m_pickupDatetime = new GregorianCalendar();

@@ -33,7 +33,6 @@ public class NumericalSummaryMapper extends
 	private static Text m_tipAmountKey = new Text("tip_amount");
 	private static Text m_tollsAmountKey = new Text("tolls_amount");
 	private static Text m_totalAmountKey = new Text("total_amount");
-	private long m_totalCount = 0;
 	
 	@Override
 	public void setup(Context context) {
@@ -72,8 +71,6 @@ public class NumericalSummaryMapper extends
 	@Override
 	public void map(LongWritable key, TripDataTuple value, Context context)
 			throws IOException, InterruptedException {
-		m_totalCount+=1;
-		
 		m_passengerCountVal.putRecord(value.getPassengerCount());
 		m_tripTimeInSecsVal.putRecord(value.getTripTimeInSecs());
 		m_tripDistanceVal.putRecord(value.getTripDistance());
