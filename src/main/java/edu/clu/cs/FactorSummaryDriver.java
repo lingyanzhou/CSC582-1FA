@@ -74,7 +74,7 @@ public class FactorSummaryDriver {
 		HelpFormatter formatter = new HelpFormatter();
 		PrintWriter writer = new PrintWriter(System.err);
 		formatter.printHelp(writer, 80,
-				"hadoop jar <SomeJar> edu.clu.cs.NumericalSummaryDriver ",
+				"hadoop jar <SomeJar> edu.clu.cs.FactorSummaryDriver ",
 				"CSC582-1 Project Help", getOptions(), 4, 8,
 				"Author: Lingyan Zhou & Jianhong Zhu", true);
 		writer.close();

@@ -19,7 +19,7 @@ import org.apache.hadoop.mapreduce.lib.chain.ChainReducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class WeeklyEnsembleNSHourlyBinDriver {
+public class PearsonCorrelationDriver {
 
 	static public void main(String[] args) throws IOException,
 			ClassNotFoundException, InterruptedException {
@@ -51,19 +51,21 @@ public class WeeklyEnsembleNSHourlyBinDriver {
 
 		Configuration conf = new Configuration();
 
-		Job job = Job.getInstance(conf, "Group3 WeeklyEnsemble");
-		job.setJarByClass(WeeklyEnsembleNSHourlyBinDriver.class);
+		Job job = Job.getInstance(conf, "Group3 PearsonCorrelation");
+		job.setJarByClass(PearsonCorrelationDriver.class);
 		// job.setMapperClass(WeeklyEnsembleNSHourlyBinMapper.class);
+
+		Configuration conf2 = new Configuration(false);
 
 		ChainMapper.addMapper(job, BasicTripDataFilterMapper.class,
 				LongWritable.class, TripDataTuple.class, LongWritable.class,
-				TripDataTuple.class, conf);
-		ChainMapper.addMapper(job, WeeklyEnsembleNSHourlyBinMapper.class,
+				TripDataTuple.class, conf2);
+		ChainMapper.addMapper(job, PearsonCorrelationMapper.class,
 				LongWritable.class, TripDataTuple.class, Text.class,
-				NumericalSummaryTuple.class, conf);
-		ChainReducer.setReducer(job, NumericalSummaryReducer.class, Text.class,
-				NumericalSummaryTuple.class, Text.class,
-				NumericalSummaryTuple.class, conf);
+				PearsonCorrelationTuple.class, conf2);
+		ChainReducer.setReducer(job, PearsonCorrelationReducer.class,
+				Text.class, PearsonCorrelationTuple.class, Text.class,
+				PearsonCorrelationTuple.class, conf2);
 
 		// job.setMapOutputKeyClass(Text.class);
 		// job.setMapOutputValueClass(FloatWritable.class);
@@ -71,7 +73,7 @@ public class WeeklyEnsembleNSHourlyBinDriver {
 		// job.setOutputKeyClass(Text.class);
 		// job.setOutputValueClass(NumericalSummaryTuple.class);
 
-		job.setNumReduceTasks(78);
+		job.setNumReduceTasks(24);
 
 		job.setInputFormatClass(TripDataInputFormat.class);
 
@@ -83,13 +85,10 @@ public class WeeklyEnsembleNSHourlyBinDriver {
 	private static void printHelp() {
 		HelpFormatter formatter = new HelpFormatter();
 		PrintWriter writer = new PrintWriter(System.err);
-		formatter
-				.printHelp(
-						writer,
-						80,
-						"hadoop jar <SomeJar> edu.clu.cs.WeeklyEnsembleNSHourlyBinDriver ",
-						"CSC582-1 Project Help", getOptions(), 4, 8,
-						"Author: Lingyan Zhou & Jianhong Zhu", true);
+		formatter.printHelp(writer, 80,
+				"hadoop jar <SomeJar> edu.clu.cs.PearsonCorrelationDriver ",
+				"CSC582-1 Project Help", getOptions(), 4, 8,
+				"Author: Lingyan Zhou & Jianhong Zhu", true);
 		writer.close();
 	}
 
