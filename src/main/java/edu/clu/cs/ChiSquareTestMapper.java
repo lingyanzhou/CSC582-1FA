@@ -24,7 +24,7 @@ public class ChiSquareTestMapper extends
 		int ind = 0;
 		for (int i = 0; i < 3; ++i) {
 			for (int j = i + 1; j < 4; ++j) {
-				s_keys[ind] = new Text(s_colNames[i] + "_X_" + s_colNames[j]);
+				s_keys[ind] = new Text(s_colNames[i] + "," + s_colNames[j]);
 				ind += 1;
 			}
 		}

@@ -66,7 +66,7 @@ public class ChiSquareTestDriver {
 				ChiSquareTestTuple.class, conf2);
 		ChainReducer.setReducer(job, ChiSquareTestReducer.class,
 				Text.class, ChiSquareTestTuple.class, Text.class,
-				FloatWritable.class, conf2);
+				ChiSquareTestTuple.class, conf2);
 
 		// job.setMapOutputKeyClass(Text.class);
 		// job.setMapOutputValueClass(FloatWritable.class);

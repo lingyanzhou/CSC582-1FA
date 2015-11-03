@@ -1,5 +1,10 @@
 package edu.clu.cs;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 /**
  * 
  * @author lingyan zhou
@@ -8,10 +13,6 @@ package edu.clu.cs;
  * 
  */
 public class TripDataFormatHelper {
-	public enum VariableType {
-		Numerical, Categorical,
-	}
-
 	private static final String[] s_VenderIdLevels = { "CMT", "VTS" };
 	private static final String[] s_PaymentTypeLevels = { "CRD", "CSH", "DIS",
 			"NOC", "UNK" };
@@ -39,5 +40,18 @@ public class TripDataFormatHelper {
 	public static NumericalValue s_tipAmount = new NumericalValue(0, 200);
 	public static NumericalValue s_tollsAmount = new NumericalValue(0, 200);
 	public static NumericalValue s_totalAmount = new NumericalValue(0, 700);
+	
+	public static Calendar s_minDate = new GregorianCalendar();
+	public static Calendar s_maxDate = new GregorianCalendar();
+	
+	static {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			s_minDate.setTime(format.parse("2013-06-01 00:00:00"));
+			s_maxDate.setTime(format.parse("2013-10-01 23:59:59"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

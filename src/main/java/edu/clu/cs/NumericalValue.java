@@ -20,5 +20,13 @@ public class NumericalValue {
 			return Float.NaN;
 		}
 	}
+	
+	public float getMin() {
+		return m_min;
+	}
+	
+	public float getMax() {
+		return m_max;
+	}
 
 }
