@@ -90,14 +90,14 @@ public class KNNTipAmountPredictorDriver {
 				FloatWritable.class, conf);
 
 		conf = new Configuration(false);
-		TopKItemsLFMapper.setK(conf, k);
-		ChainMapper.addMapper(job, TopKItemsMapper.class, Text.class,
+		BottomKItemsMapper.setK(conf, k);
+		ChainMapper.addMapper(job, BottomKItemsMapper.class, Text.class,
 				FloatWritable.class, Text.class, FloatWritable.class,
 				conf);
 
 		conf = new Configuration(false);
-		TopKItemsLFReducer.setK(conf, k);
-		ChainReducer.setReducer(job, TopKItemsReducer.class,
+		BottomKItemsReducer.setK(conf, k);
+		ChainReducer.setReducer(job, BottomKItemsReducer.class,
 				Text.class, FloatWritable.class, Text.class,
 				FloatWritable.class, conf);
 
