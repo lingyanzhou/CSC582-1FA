@@ -1,0 +1,25 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Methods}{4}{section.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Data Preprocessing}{4}{subsection.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Visualizing Sample Data}{5}{subsection.2.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3}Data Filtering}{6}{subsection.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4}Assorted Statistical Summaries}{7}{subsection.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5}Correlations and Dependency}{8}{subsection.2.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.6}Interesting Tipping Behavior}{10}{subsection.2.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.7}K-nearest-neighbor Tip Predictor}{13}{subsection.2.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Performance}{13}{section.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Discussion}{13}{section.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{References}{15}{section*.12}

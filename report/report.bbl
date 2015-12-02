@@ -1,0 +1,294 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{nyctlcwebsite}{online}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Taxi}{T.}%
+     {{NYC}}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Commission}{C.}%
+     {Limousine}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TNCL1}
+  \strng{fullhash}{TNCL1}
+  \field{title}{Research and Statistics}
+  \verb{url}
+  \verb http://www.nyc.gov/html/tlc/html/about/statistics.shtml
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{nyctaxyvisualwebsite}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Whong}{W.}%
+     {Chris}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{WC1}
+  \strng{fullhash}{WC1}
+  \field{title}{{NYC} Taxis: A Day in the Life - A Data Visualization}
+  \verb{url}
+  \verb http://www.nyc.gov/html/tlc/html/about/statistics.shtml
+  \endverb
+  \field{year}{2014}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{flighttaxiwebsite}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Imagework}{I.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{I1}
+  \strng{fullhash}{I1}
+  \field{title}{{NYC} taxi holiday visualization from {JFK} and {LGA} airports}
+  \verb{url}
+  \verb http://taxi.imagework.com/
+  \endverb
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+  \warn{\item Invalid format of field 'date' \item Invalid format of field
+  'date'}
+\endentry
+
+\entry{hubcabwebsite}{online}{}
+  \name{author}{10}{}{%
+    {{}%
+     {Ratti}{R.}%
+     {Carlo}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Szell}{S.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Baczuk}{B.}%
+     {Eric}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Grob}{G.}%
+     {Benedikt}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {Joseph}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Thebault}{T.}%
+     {Pierrick}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {NJ~Namju}{N.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Turgeman}{T.}%
+     {Yaniv~Jacob}{Y.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weib}{W.}%
+     {Andi}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Landsbek}{L.}%
+     {Stefan}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RCSMBEGBLJTPLNNTYJWALS1}
+  \strng{fullhash}{RCSMBEGBLJTPLNNTYJWALS1}
+  \field{title}{Exploring New York City taxi trails and sharing our way to a
+  more sustainable urban future}
+  \verb{url}
+  \verb http://hubcab.org/#11.00/40.7250/-73.8500
+  \endverb
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+  \warn{\item Invalid format of field 'date' \item Invalid format of field
+  'date'}
+\endentry
+
+\entry{hafenwebsite}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Hafen}{H.}%
+     {Ryan}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HR1}
+  \strng{fullhash}{HR1}
+  \field{title}{Exploration of {NYC} Taxi Data}
+  \verb{url}
+  \verb http://hafen.github.io/taxi/#initial-exploration
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{andrewj}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {James}{J.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{JA1}
+  \strng{fullhash}{JA1}
+  \field{title}{{New York} City Taxicab Transportation Demand Modeling for the
+  Analysis of Ridesharing and Autonomous Taxi Systems}
+  \verb{url}
+  \verb http://orfe.princeton.edu/~alaink/Theses/SeniorTheses%2715/AJSwoboda--N
+  \verb YC_aTaxiRideSharingPotential2015.pdf
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{nyctaxidatadict}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{NYC Taxi and Limousine Commission}}{N.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{N1}
+  \strng{fullhash}{N1}
+  \field{title}{Data Dictionary - Yellow Taxi Trip Records}
+  \verb{url}
+  \verb http://www.nyc.gov/html/tlc/downloads/pdf/data_dictionary_trip_records_
+  \verb yellow.pdf
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{projrepo}{online}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Zhou}{Z.}%
+     {Lingyan}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhu}{Z.}%
+     {Jianhong}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZLZJ1}
+  \strng{fullhash}{ZLZJ1}
+  \field{title}{{CSC582-1FA}}
+  \verb{url}
+  \verb https://github.com/lingyanzhou/CSC582-1FA
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{hdbestpract}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{acm}}{a.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{a1}
+  \strng{fullhash}{a1}
+  \field{title}{Apache Hadoop: Best Practices and Anti-Patterns}
+  \verb{url}
+  \verb https://developer.yahoo.com/blogs/hadoop/apache-hadoop-best-practices-a
+  \verb nti-patterns-465.html
+  \endverb
+  \field{year}{2010}
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{hadoopsource}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Apache Software Foundation}}{A.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{A1}
+  \strng{fullhash}{A1}
+  \field{title}{{Hadoop} core}
+  \verb{url}
+  \verb http://grepcode.com/file/repository.cloudera.com/content/repositories/r
+  \verb eleases/com.cloudera.hadoop/hadoop-core/0.20.2-737/org/apache/hadoop/ma
+  \verb preduce/lib/input/TextInputFormat.java?av=f
+  \endverb
+  \field{urlmonth}{10}
+  \field{urlyear}{2015}
+\endentry
+
+\entry{chisqwebsite}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Wikipedia}{W.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{W1}
+  \strng{fullhash}{W1}
+  \field{title}{Chi-squared test}
+  \verb{url}
+  \verb https://en.wikipedia.org/wiki/Chi-squared_test
+  \endverb
+  \field{year}{2015}
+  \field{urlmonth}{11}
+  \field{urlyear}{2015}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
